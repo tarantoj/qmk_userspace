@@ -38,12 +38,15 @@ enum custom_layers {
 
 // For _QWERTY layer
 #define GUI_ENT  GUI_T(KC_ENT)
+#define GUI_TAB  GUI_T(KC_TAB)
 #define LOW_TAB  LT(_LOWER, KC_TAB)
+#define LOW_SPC  LT(_LOWER, KC_SPC)
 #define OSL_FUN  OSL(_FUNC)
 #define OSM_AGR  OSM(MOD_RALT)
 #define OSM_LCTL OSM(MOD_LCTL)
 #define OSM_SFT  OSM(MOD_LSFT) 
 #define RSE_BSP  LT(_RAISE, KC_BSPC)
+#define RSE_ENT  LT(_RAISE, KC_ENT)
 
 
 // For _RAISE layer
@@ -58,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
  OSM(MOD_LSFT),   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                     KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,KC_SLSH ,OSL_FUN ,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                         OSM_LCTL, LOW_TAB, KC_SPC,   GUI_ENT ,  RSE_BSP,OSM_SFT
+                                         OSM_LCTL, GUI_TAB, LOW_SPC,   RSE_ENT , KC_BSPC ,OSM_SFT
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -70,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, XXXXXXX , KC_TILD,KC_GRV, KC_LBRC, KC_LCBR,                       KC_RCBR, KC_RBRC, KC_COMM,KC_DOT,  KC_SLSH, _______ ,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_TRNS,  KC_TRNS, LOWER,    KC_TRNS, KC_TRNS, KC_COLON
+                                          KC_TRNS,  KC_TRNS, LOWER,    KC_TRNS, KC_DEL, KC_COLON
                                       //`--------------------------'  `--------------------------'
     ),
 
@@ -102,9 +105,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+      case LT(_RAISE, KC_ENT):
       case LT(_RAISE, KC_BSPC):
-            return TAPPING_TERM_THUMB;
       case LT(_LOWER, KC_TAB):
+      case LT(_LOWER, KC_SPC):
             return TAPPING_TERM_THUMB;
       default:
             return TAPPING_TERM;
