@@ -18,12 +18,12 @@ enum combos {
 const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
 
-combo_t key_combos[COMBO_COUNT] = {
-  // Add commonly used dash to home row
-  [DF_DASH]    = COMBO(df_combo, KC_MINS),
-  // For Vim, put Escape on the home row
-  [JK_ESC]    = COMBO(jk_combo, KC_ESC),
-};
+// combo_t key_combos[COMBO_COUNT] = {
+//   // Add commonly used dash to home row
+//   [DF_DASH]    = COMBO(df_combo, KC_MINS),
+//   // For Vim, put Escape on the home row
+//   [JK_ESC]    = COMBO(jk_combo, KC_ESC),
+// };
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -41,6 +41,7 @@ enum custom_layers {
 #define GUI_TAB  GUI_T(KC_TAB)
 #define LOW_TAB  LT(_LOWER, KC_TAB)
 #define LOW_SPC  LT(_LOWER, KC_SPC)
+#define LOW_ESC  LT(_LOWER, KC_ESC)
 #define OSL_FUN  OSL(_FUNC)
 #define OSM_AGR  OSM(MOD_RALT)
 #define OSM_LCTL OSM(MOD_LCTL)
@@ -73,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
     OSM_AGR,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                          KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,KC_SLSH ,KC_ESC ,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                         KC_LGUI, MO(_LOWER), KC_SPC,   KC_ENT , RSE_BSP ,OSM_SFT
+                                         KC_LGUI, LOW_ESC, KC_SPC,   KC_ENT , RSE_BSP ,OSM_SFT
                                       //`--------------------------'  `--------------------------'
   ),
 
