@@ -10,13 +10,13 @@ enum custom_keycodes {
   BACKLIT
 };
 
-enum combos {
-  DF_DASH,
-  JK_ESC
-};
+// enum combos {
+//   DF_DASH,
+//   JK_ESC
+// };
 
-const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END};
-const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
+// const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END};
+// const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
 
 // combo_t key_combos[COMBO_COUNT] = {
 //   // Add commonly used dash to home row
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, KC_1,    KC_2,   KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______ ,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_TILD,  KC_GR, KC_LPRN, KC_LBRC, KC_LCBR,                       KC_RCBR, KC_RBRC, KC_RPRN,KC_DOT,  KC_SLSH, _______ ,
+      _______, KC_TILD,  KC_GRV, KC_LPRN, KC_LBRC, KC_LCBR,                       KC_RCBR, KC_RBRC, KC_RPRN,KC_DOT,  KC_SLSH, _______ ,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_TRNS,  KC_TRNS, LOWER,    KC_TRNS, KC_BSPC, KC_COLON
                                       //`--------------------------'  `--------------------------'
