@@ -127,3 +127,40 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM;
     }
 }
+const rgblight_segment_t PROGMEM default_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 6, HSV_GOLDENROD},
+    {6, 21, HSV_OFF},
+    {27, 6, HSV_GOLDENROD},
+    {33, 27, HSV_OFF}
+);
+const rgblight_segment_t PROGMEM lower_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 6, HSV_CHARTREUSE},
+    {6, 21, HSV_OFF},
+    {27, 6, HSV_CHARTREUSE},
+    {33, 27, HSV_OFF}
+);
+const rgblight_segment_t PROGMEM raise_layer[] = RGBLIGHT_LAYER_SEGMENTS(
+    {0, 6, HSV_CORAL},
+    {6, 21, HSV_OFF},
+    {27, 6, HSV_CORAL},
+    {33, 27, HSV_OFF}
+);
+
+const rgblight_segment_t* const PROGMEM my_rgb_layers[] = RGBLIGHT_LAYERS_LIST(
+        default_layer,
+        lower_layer,
+        raise_layer
+);
+
+void keyboard_post_init_user(void) {
+    // Enable the LED layers
+    rgblight_layers = my_rgb_layers;
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    rgblight_set_layer_state(0, layer_state_cmp(state, _QWERTY));
+    rgblight_set_layer_state(1, layer_state_cmp(state, _LOWER));
+    rgblight_set_layer_state(2, layer_state_cmp(state, _RAISE));
+    return state;
+}
+

@@ -8,4 +8,4 @@ COMBO_ENABLE = no
 
 # This is for RGB *underglow*
 # https://github.com/qmk/qmk_firmware/blob/master/docs/feature_rgblight.md
-RGBLIGHT_ENABLE = no
+RGBLIGHT_ENABLE = yes
